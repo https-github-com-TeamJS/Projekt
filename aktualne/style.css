@@ -83,11 +83,12 @@ form {
 
 }
 
-
+/* puste, więc jest zbędne */
 #status {
 	
 }
 
+/* proszę nie używać selektorów do id, teraż jakby chciałem taki drugi element, to muszę skopijowaś klasę styli.  */
 #color {
 	width:100px;
 	height:50px;
@@ -95,6 +96,27 @@ form {
 	margin-right: auto;
 	display: block;
 	
+}
+
+/* tu zrobiłem klasę styli i jej użyłem, tą górną zostawiłem żeby zobaczyliście róznicę */
+.color {
+	width:100px;
+	height:50px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.palete-color{
+	width: 50pt;
+	height: 50pt;
+}
+
+#colorContainer{
+    display: -ms-flexbox;
+	display: flex;
+	-ms-flex-pack: center;
+    justify-content: center;
 }
 
 .article {

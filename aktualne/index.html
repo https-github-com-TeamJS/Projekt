@@ -1,86 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head> <!-- w nim wszytkie odwlowania -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<!--Ta składania w sumie to skaluje ci strone na urządzenia mobilne -->
-	<title>Color Finder</title>
-	<!-- odwolanie boostrapa do ikon zeby niebyly lokalnie na  serwerze -->
-	<link rel="stylesheet" href="style.css"> <!-- Tutaj mozemy umiescic cssa etc -->
-	<style>  
-	</style>
-
+	<head>
+		<!-- w nim wszytkie odwlowania -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--Ta składania w sumie to skaluje ci strone na urządzenia mobilne -->
+		<title>Color Finder</title>
+		<!-- odwolanie boostrapa do ikon zeby niebyly lokalnie na  serwerze -->
+		<link rel="stylesheet" href="style.css"> <!-- Tutaj mozemy umiescic cssa etc -->
 	</head>
-<body> 
+	<body>
+		<div class="navi">
+			<a href="#"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+		</div>
 
-	<div class="navi">
-	
-		<a href="#"></a>
-		<a href="#"></a>
-		<a href="#"></a>
-		<a href="#"></a>	
-	</div>
-	
-	<!-- menu --> 
-	<div class="nav">
-	
-		<a href="#"> Strona Główna </a>
-		<a href="#"> Projekt</a>
-		<a href="#"> Aktualne prace </a>
-		<a href="#"> O nas </a>	
-		
-		
-	<!-- to jest wyszukiwanie google -->
-	<!-- <form>
-		<input type="search" name="q" placeholder="Wpisz coś">
-		<input type="submit" value="Szukaj">
-	</form> -->
+		<!-- menu -->
+		<div class="nav">
+			<a href="#"> Strona Główna </a>
+			<a href="#"> Projekt</a>
+			<a href="#"> Aktualne prace </a>
+			<a href="#"> O nas </a>
+		</div>
 
-	</div>
-	
-	<!-- po prostu napis --> 
-	<div class="header">
-	<h1>Paint Picker</h1>
-	</div>
-	<!-- dolna linia -->
-	<div class="navi">
-	
-		<a href="#"></a>
-		<a href="#"></a>
-		<a href="#"></a>
-		<a href="#"></a>	
-	
+		<!-- po prostu napis -->
+		<div class="header">
+			<h1>Paint Picker</h1>
+		</div>
+		<!-- dolna linia -->
+		<div class="navi">
+			<a href="#"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+		</div>
 
-	</div>
-	<!--srodkowa plus lokalnie grafika -------------------------------------------------  -->
-	<div class="centrum">
-	<div class="section"> 
-   <div class="image-preview" id="imagePreview">
-	<img src="" alt="Image Preview" class="image-preview__image">
-		
-    
-    </div>
-	<input type="file" name="inpFile" id="inpFile" accept=".png, .jpeg,.jpg">
-	<script src="wczy.js"> alert(hex); </script> 
-	<script src="wczy2.js"> alert(hex); </script> 
-	</div> 
-	
-	<!--  ------------------------------------------------- -->
-	<div class="article">
-		
-	<div class="autko">
-	<canvas id="canvas" height="500" width="800" ></canvas>
-	<div id="status"></div><br>
-	<div id="color"> </div>
+		<!--srodkowa plus lokalnie grafika -------------------------------------------------  -->
+		<div class="centrum">
+			<div class="section">
+				<!-- Cały div imagePreview wraz z obrazkiem jest używany tylko po to żeby przekaza`c obrazek base64 - do kosza-->
+				<!-- jak nie jak ale obrazek si`e laduje, tylko jego nie pokazujecie -->
+				<div class="image-preview" id="imagePreview">
+					<img src="" alt="Image Preview" class="image-preview__image">
+				</div>
+				<input type="file" name="inpFile" id="inpFile" accept=".png, .jpeg,.jpg">
+			</div>
+			<div class="article">
+				<div class="autko">
+					<!-- Musicie tu pomyśle`c jak zachować proporcje obrazku -->
+					<canvas id="canvas" height="500" width="800"></canvas>
+					<div id="status"></div><br>
+					<div id="color" class="color"> </div>
+					<div id="rgb-status"></div><br>
+					<div id="rgb-color" class="color"> </div>
+					<label id="paleta"></label>
+					<div id="colorContainer"></div>
+				</div>
+			</div>
+		</div>
 
-	</div>
-</div>
-</div>
+		<script src="wczy.js"> alert(hex); </script>
+		<script src="wczy2.js"> alert(hex); </script>
 
-<div class="footer">
-</div>
-	
-	
-
-</body>
+		<div class="footer">
+		</div>
+	</body>
 </html>

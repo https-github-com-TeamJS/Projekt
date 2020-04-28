@@ -1,0 +1,56 @@
+.navbar-ppg {
+    .navbar-brand {
+      color: $ppg-base-active-color;
+  
+      @include hover-focus {
+        color: $ppg-base-active-color;
+      }
+    }
+  
+    .navbar-nav {
+      .nav-link {
+        color: $ppg-base-link-color;
+  
+        @include hover-focus {
+          color: $ppg-base-hover-color;
+        }
+  
+        &.disabled {
+          color: $ppg-base-disabled-color;
+        }
+      }
+  
+      .show > .nav-link,
+      .active > .nav-link,
+      .nav-link.show,
+      .nav-link.active {
+        color: $ppg-base-active-color;
+      }
+    }
+  
+    .navbar-toggler {
+      color: $ppg-base-link-color;
+      border-color: $ppg-base-border-color;
+    }
+  
+    .navbar-toggler-icon {
+      background-image: $navbar-ppg-base-toggler-icon-bg;
+    }
+  
+    .navbar-text {
+      color: $ppg-base-link-color;
+      a {
+        color: $ppg-base-active-color;
+  
+        @include hover-focus {
+          color: $ppg-base-active-color;
+        }
+      }
+    }
+
+    &::after {
+        bottom: -1px;
+        @include ppg-border-gradient;
+    }
+    box-shadow: 0 .25rem .75rem $shadow-color;
+  }

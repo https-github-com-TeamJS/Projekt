@@ -1,6 +1,7 @@
 .navbar-ppg {
     .navbar-brand {
       color: $ppg-base-active-color;
+      margin-left: 6%;
   
       @include hover-focus {
         color: $ppg-base-active-color;

@@ -10771,6 +10771,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .navbar-ppg .navbar-brand {
   color: rgba(0, 120, 169, 0.9);
+  margin-left: 6%;
 }
 
 .navbar-ppg .navbar-brand:hover, .navbar-ppg .navbar-brand:focus {

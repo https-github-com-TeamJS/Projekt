@@ -1,0 +1,14 @@
+$ppg-base-color: rgb(0,120,169);
+$ppg-middle-color: rgb(31,160,207);
+$ppg-light-color: rgb(62,199,244);
+$shadow-color: rgba(0, 0, 0, .13);
+$shadow-color-bottom: rgba(0, 0, 0, .3);
+$shadow-color-bottom: rgba(0, 0, 0, .3);
+
+
+$ppg-base-active-color: rgba($ppg-base-color,0.9);
+$ppg-base-hover-color: rgba($ppg-base-color,0.7);
+$ppg-base-link-color: rgba($ppg-base-color,0.5);
+$ppg-base-disabled-color: rgba($ppg-base-color,0.3);
+$ppg-base-border-color: rgba($ppg-base-color,0.4);
+$navbar-ppg-base-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$ppg-base-link-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;

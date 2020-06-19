@@ -1,62 +1,62 @@
 function processData(data, selectedColor){
-    data = filterData(selectedColor, data); // musi być dodany dystans do róznicy kolorów, liczba czy % to już jak tam algorytm zaimplementujecie
-    displayData(data);
+    data = filterData(selectedColor, data, 100000); // musi być dodany dystans do róznicy kolorów, liczba czy % to już jak tam algorytm zaimplementujecie
+    dispayData(data);
 }
 
 function filterData(selectedColor, data, distance){
     let result = new Array(); 
     for (let color of data){
-        if (colorEquals(selectedColor, color, distance)){
+        if (colorEquals(selectedColor, color.hex, distance)){
             result.push(color);
         }
     }
+
     return result;
 }
 
 function colorEquals(selectedColor, color, distance){
 
-    let rgbSelecterColor = hexToRgb(selectedColor);
-    let rgbColor = hexToRgb(color.hex);
-    
-    
-    function hexToRgb(hex) {
-         let bigint = parseInt(hex.replace('#', ''), 16);
-        
-        return{
+    let rgbSelecterColor = toRgb(selectedColor);
+    let rgbColor = toRgb(color);
 
-            r: (bigint >> 16) & 0xFF,
-            g: (bigint >> 8) & 0xFF,  
-            b: bigint & 0xFF,
+    function toRgb(value) {
+        if (value.indexOf("rgb") >= 0) {
+            if (value.indexOf('(') != value.lastIndexOf(')')) {
+                let spectres = value.substring(value.indexOf('(') + 1, value.lastIndexOf(')')).split(',');
+                if (spectres.length > 0)
+                    return {
+                        r: parseInt(spectres[0].trim()),
+                        g: parseInt(spectres[1].trim()),
+                        b: parseInt(spectres[2].trim())
+                    }
+            }
+        } else {
+            let bigint = parseInt(value.replace('#', ''), 16);
 
+            return {
+                r: (bigint >> 16) & 0xFF,
+                g: (bigint >> 8) & 0xFF,
+                b: bigint & 0xFF
+            }
         }
     }
-    
 
+    let cR=rgbColor.r-rgbSelecterColor.r,
+        cG=rgbColor.g-rgbSelecterColor.g,
+        cB=rgbColor.b-rgbSelecterColor.b,
+        uR=rgbColor.r+rgbSelecterColor.r;
 
-    cR=rgbColor.r-rgbSelecterColor.r
-    cG=rgbColor.g-rgbSelecterColor.g
-    cB=rgbColor.b-rgbSelecterColor.b
-    uR=rgbColor.r+rgbSelecterColor.r 
-
-
-    
-    distance=cR*cR*(2+uR/256) + cG*cG*4 + cB*cB*(2+(255-uR)/256)
-    
- 
-    
-    // tu algorytm do sprawdzenia koloru, gdzie selectedColor jest kolor wybrany przez użytkownika, a color - kolor z tablicy danych, distance dopuszczalna róznica
-    // oczywiszcze operujecie na hexach dlatego nie podaje tu typy, no i return jest pod względem porówmania objektów, wlaśnie musicie to zmienić
-    return selectedColor <= color + distance;
-    
+    let colorDistance=cR*cR*(2+uR/256) + cG*cG*4 + cB*cB*(2+(255-uR)/256);
+    return colorDistance >= distance;  
 }
 
 function dispayData(data){
-
     // tu ma być algorytm do wyswiętlania danych
     //pobrać kontener gdzie będą dodawane danę <div class="row">, nadajcie mu jakiś id
     for (let color of data){
-        
-       // tu będziecie mieli już kolor pojedynczy z tablicy kolorów wyfiltowanych
+       console.log(color); 
+       
+        // tu będziecie mieli już kolor pojedynczy z tablicy kolorów wyfiltowanych
       
     }
 }
@@ -90,8 +90,3 @@ function getData(selectedColor){
 
             
     }); 
-
-
-
-
- 

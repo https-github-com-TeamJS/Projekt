@@ -1,6 +1,6 @@
 function processData(data, selectedColor){
     
-    data = filterData(selectedColor, data, 5000); // 0,8%
+    data = filterData(selectedColor, data, 300); // 0,8%
     dispayData(data);
     
 
@@ -55,10 +55,14 @@ function colorEquals(selectedColor, color, distance){
 
         //console.log(rgbColor);
     let colorDistance=(cR*cR*(2+uR/256) + cG*cG*4 + cB*cB*(2+(255-uR)/256));
-   
+
+   if(colorDistance <= distance){
+    console.log(color)
+    console.log(colorDistance)
     
+   }
+
     return colorDistance <= distance;  
-   
 }
 
 
@@ -93,30 +97,40 @@ function getData(selectedColor){
     }); 
 
     function dispayData(data){
-        // tu ma być algorytm do wyswiętlania danych
-        //pobrać kontener gdzie będą dodawane danę <div class="row">, nadajcie mu jakiś id
-        for (let color of data)
+        const colorContainer = document.querySelector("#colorContainer");
+        colorContainer.innerHTML = "";
+
+        if(data.length == 0)
         {
-        
-        
-        console.log(data);
-
-        
-
-           for (let i = 1; i >= 10; i++) {
-           
-            document.createElement("div"); // tworzę element div
-            color.className = "color-item text-center my-2"; // przypisanie klasy styli
-
-            document.createElement("div");
-            color.className = "hexagon";
-            color.style.backgroundColor;// nadanie koloru tla
-
-            document.createElement("label");
-            color.className = "lead text-muted";
-            
+            const noItems = document.createElement("label");
+            noItems.className = "color-item text-center my-2"; // przypisanie klasy styli
+            noItems.innerText = "No items found";
+            colorContainer.appendChild(noItems);
             
         }
+    
+
+        // tu ma być algorytm do wyswiętlania danych
+        //pobrać kontener gdzie będą dodawane danę <div class="row">, nadajcie mu jakiś id
+        for (let item of data)
+        {
+           
+            const color = document.createElement("div"); // tworzę element div
+            color.className = "color-item text-center my-2"; // przypisanie klasy styli
+
+            const hexagon = document.createElement("div");
+            hexagon.className = "hexagon";
+            hexagon.style.backgroundColor =  "#" + ("000000" + item.hex).slice(-6);; // nadanie koloru tla
+            color.appendChild(hexagon);
+            const label = document.createElement("label");
+            label.className = "lead text-muted";
+            label.innerText = item.name;
+            color.appendChild(label);
+            colorContainer.appendChild(color);
+            
+            
+            
+        
             // tu będziecie mieli już kolor pojedynczy z tablicy kolorów wyfiltowanych
           
         }

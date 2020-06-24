@@ -110,11 +110,11 @@
             console.log(i);
             const rgba = "rgba(" + pixelData[0] + "," + pixelData[1] + "," + pixelData[2] + "," + i +")";
             // tworzę element div
-            const color = document.createElement("div");
+            const color = document.createElement("hexa");
             // prypisuję klasę styli
             color.className = "color-item text-center my-2";
             // nadałem kolor tla
-            color.style.backgroundColor = rgba;
+            color.style.backgroundColor;
             // wkleilem jako dziecko elementa "autko"
             colorContainer.appendChild(color);
         }
@@ -124,26 +124,3 @@
 
 
 
-const getBtn = document.getElementById('New_Data'); 
-
-function getData(selectedColor){
-    var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            let data = JSON.parse( this.responseText);
-            console.log(data);
-            
-            //albo w tym jquery done(getData(data, selectedColor));        
-          } else {
-              // warto wyswietlić jakiś komunikat użytkownikówi że pobranie danych nie powiodło si`e i że warto spróbować pózniej
-           
-          }
-        };
-        xhttp.open("GET", "https://paintpickerapi-dev.azurewebsites.net/colors", true);
-        xhttp.setRequestHeader("token", "9bc4e1bf91a34752adaa52ba6b322a36");
-        xhttp.send();
-}
-getBtn.addEventListener('click', getData);
-
-
-    

@@ -1,6 +1,9 @@
 function processData(data, selectedColor){
-    data = filterData(selectedColor, data, 100000); // musi być dodany dystans do róznicy kolorów, liczba czy % to już jak tam algorytm zaimplementujecie
+    
+    data = filterData(selectedColor, data, 5000); // 0,8%
     dispayData(data);
+    
+
 }
 
 function filterData(selectedColor, data, distance){
@@ -8,6 +11,8 @@ function filterData(selectedColor, data, distance){
     for (let color of data){
         if (colorEquals(selectedColor, color.hex, distance)){
             result.push(color);
+            
+          
         }
     }
 
@@ -41,29 +46,23 @@ function colorEquals(selectedColor, color, distance){
         }
     }
 
-    let cR=rgbColor.r-rgbSelecterColor.r,
-        cG=rgbColor.g-rgbSelecterColor.g,
-        cB=rgbColor.b-rgbSelecterColor.b,
-        uR=rgbColor.r+rgbSelecterColor.r;
+    let cR=rgbColor.r-rgbSelecterColor.r;
+    let cG=rgbColor.g-rgbSelecterColor.g;
+    let cB=rgbColor.b-rgbSelecterColor.b;
+    let uR=rgbColor.r+rgbSelecterColor.r;
 
-    let colorDistance=cR*cR*(2+uR/256) + cG*cG*4 + cB*cB*(2+(255-uR)/256);
-    return colorDistance >= distance;  
-}
+    
 
-function dispayData(data){
-    // tu ma być algorytm do wyswiętlania danych
-    //pobrać kontener gdzie będą dodawane danę <div class="row">, nadajcie mu jakiś id
-    for (let color of data){
-       console.log(color); 
-       
-        // tu będziecie mieli już kolor pojedynczy z tablicy kolorów wyfiltowanych
-      
-    }
+        //console.log(rgbColor);
+    let colorDistance=(cR*cR*(2+uR/256) + cG*cG*4 + cB*cB*(2+(255-uR)/256));
+   
+    
+    return colorDistance <= distance;  
+   
 }
 
 
 
-/////////////////////////////////////////////////
 function getData(selectedColor){
     var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -88,5 +87,39 @@ function getData(selectedColor){
              
              console.log(selectedColor);
 
+
+
             
     }); 
+
+    function dispayData(data){
+        // tu ma być algorytm do wyswiętlania danych
+        //pobrać kontener gdzie będą dodawane danę <div class="row">, nadajcie mu jakiś id
+        for (let color of data)
+        {
+        
+        
+        console.log(data);
+
+        
+
+           for (let i = 1; i >= 10; i++) {
+           
+            document.createElement("div"); // tworzę element div
+            color.className = "color-item text-center my-2"; // przypisanie klasy styli
+
+            document.createElement("div");
+            color.className = "hexagon";
+            color.style.backgroundColor;// nadanie koloru tla
+
+            document.createElement("label");
+            color.className = "lead text-muted";
+            
+            
+        }
+            // tu będziecie mieli już kolor pojedynczy z tablicy kolorów wyfiltowanych
+          
+        }
+    }
+  
+      
